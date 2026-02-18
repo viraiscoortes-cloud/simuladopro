@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://cdn-icons-png.flaticon.com/512/5832/5832416.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#111827" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="SimulaPro" />
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/5832/5832416.png" />
+    <link rel="manifest" href="manifest.json" />
+    <title>Elite SimulaPro: Simulados com IA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#1e40af', 
+              secondary: '#1d4ed8', 
+              accent: '#3b82f6', 
+              neutral: '#1f2937', 
+              'neutral-light': '#374151', 
+              'neutral-dark': '#111827' 
+            }
+          }
+        }
+      }
+    </script>
+    <script type="importmap">
+    {
+      "imports": {
+        "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+        "@google/genai": "https://esm.sh/@google/genai@^1.41.0",
+        "react/": "https://esm.sh/react@^19.2.4/",
+        "react": "https://esm.sh/react@^19.2.4"
+      }
+    }
+    </script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-neutral-dark text-gray-100 overflow-x-hidden">
+    <div id="root"></div>
+    <!-- O script abaixo tenta carregar o index.tsx. Em produção, este arquivo será convertido para .js -->
+    <script type="module" src="index.tsx"></script>
+    <script>
+      // Registro do Service Worker otimizado para produção
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js', { scope: './' })
+            .then(reg => console.log('SimulaPro: PWA Ativado com sucesso!'))
+            .catch(err => console.error('SimulaPro: Falha ao ativar PWA', err));
+        });
+      }
+    </script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
